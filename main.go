@@ -6,11 +6,10 @@ import (
 	"github.com/gdamore/tcell/v2"
 	"github.com/kzmrv/go-snake/direction"
 	g "github.com/kzmrv/go-snake/geometry"
-	s "github.com/kzmrv/go-snake/screen"
 )
 
 func main() {
-	screen := s.SetupScreen()
+	screen := SetupScreen()
 	quit := func() {
 		// You have to catch panics in a defer, clean up, and
 		// re-raise them - otherwise your application can
@@ -26,7 +25,7 @@ func main() {
 	maxX, maxY := screen.Size()
 	maxDims := g.Point{X: maxX, Y: maxY}
 	state := InitState(maxDims)
-	s.SetFood(screen, *state.Food)
+	SetFood(screen, *state.Food)
 
 	currTick := 500
 	ticker := time.NewTicker(time.Duration(currTick) * time.Millisecond)

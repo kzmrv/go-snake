@@ -1,4 +1,4 @@
-package screen
+package main
 
 import (
 	"log"

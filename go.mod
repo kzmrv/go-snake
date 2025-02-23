@@ -2,7 +2,7 @@ module github.com/kzmrv/go-snake
 
 go 1.23.1
 
-require github.com/gdamore/tcell/v2 v2.8.1
+require github.com/gdamore/tcell/v2 v2.7.4
 
 require (
 	github.com/gdamore/encoding v1.0.1 // indirect

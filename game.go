@@ -6,7 +6,6 @@ import (
 	"github.com/gdamore/tcell/v2"
 	"github.com/kzmrv/go-snake/direction"
 	g "github.com/kzmrv/go-snake/geometry"
-	s "github.com/kzmrv/go-snake/screen"
 )
 
 type Node struct {
@@ -53,7 +52,7 @@ func advanceState(state *GameState, screen tcell.Screen) {
 	newHeadPos := getNewHeadPos(state)
 
 	if checkCollision(snake.Tail, &newHeadPos) {
-		s.SetLose(screen)
+		SetLose(screen)
 		screen.Show()
 		return
 	}
@@ -65,13 +64,13 @@ func advanceState(state *GameState, screen tcell.Screen) {
 	if newHeadPos.X == state.Food.X && newHeadPos.Y == state.Food.Y {
 		state.Food.X = rand.IntN(state.MaxDims.X)
 		state.Food.Y = rand.IntN(state.MaxDims.Y)
-		s.SetFood(screen, *state.Food)
+		SetFood(screen, *state.Food)
 	} else {
-		s.SetDef(screen, state.Snake.Tail.Point.X, state.Snake.Tail.Point.Y)
+		SetDef(screen, state.Snake.Tail.Point.X, state.Snake.Tail.Point.Y)
 		snake.Tail = snake.Tail.Prev
 	}
 
-	s.SetSnake(screen, newHead.Point.X, newHead.Point.Y)
+	SetSnake(screen, newHead.Point.X, newHead.Point.Y)
 	screen.Show()
 }
 
